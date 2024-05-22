@@ -79,8 +79,8 @@ namespace TechJobsConsoleAutograded6
         /*
          * Returns the key of the selected item from the choices Dictionary
          */
-        public string GetUserSelection(string choiceHeader, Dictionary<string, string> choices)
-        {
+        public string   GetUserSelection(string choiceHeader, Dictionary<string, string> choices)
+        {   
             int choiceIdx;
             bool isValidChoice = false;
             string[] choiceKeys = new string[choices.Count];
@@ -135,8 +135,25 @@ namespace TechJobsConsoleAutograded6
         // TODO: complete the PrintJobs method.
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("PrintJobs is not implemented yet");
+             
+            foreach (Dictionary<string, string> job in someJobs)
+            {
+                foreach (KeyValuePair<string, string> kvp in job)
+                {
+                   Console.WriteLine(kvp);
+
+                }
+                
+                
+            }
+            //read about what happens if you just try to print a dictionary
+      
+            
+            // Console.WriteLine(job[Key] + job[Value]);
+        
+        
         }
     }
-}
+    }
+
 
