@@ -138,22 +138,24 @@ namespace TechJobsConsoleAutograded6
              
             foreach (Dictionary<string, string> job in someJobs)
             {
-                foreach (KeyValuePair<string, string> kvp in job)
+                foreach (KeyValuePair<string, string> listChoice in job)
                 {
-                   Console.WriteLine(kvp);
-
+                   Console.WriteLine(listChoice.Key + ": " + listChoice.Value);  
+                   
                 }
-                
+                Console.WriteLine("******");
                 
             }
-            //read about what happens if you just try to print a dictionary
-      
             
-            // Console.WriteLine(job[Key] + job[Value]);
-        
-        
+                     if (someJobs.Count == 0)   
+        {
+            
+    
+                Console.WriteLine("No results");
         }
-    }
-    }
+            }
+        }
+    
+}
 
 
