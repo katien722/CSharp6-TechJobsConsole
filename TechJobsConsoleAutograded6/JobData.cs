@@ -42,8 +42,6 @@ namespace TechJobsConsoleAutograded6
         /**
          * Search all columns for the given term
          */
-
-        //TODO: Complete the FindByValue method
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
             // load data, if not already loaded
@@ -55,11 +53,10 @@ namespace TechJobsConsoleAutograded6
             foreach (Dictionary<string, string> job in AllJobs)
             {
                 foreach (string aValue in job.Values)
+
                 {
-                    //   Console.WriteLine(job);
-                    if (aValue.Contains(value))
-                        
-                    //this line ensures no duplicates . nope it does not ensure that
+                    if (aValue.ToLower().Contains(value.ToLower()))
+
                     {
                         if (!JobsReturnedByValue.Contains(job))
                             
@@ -68,19 +65,7 @@ namespace TechJobsConsoleAutograded6
                         }
                     }
 
-                    // Console.WriteLine(); //idk if i need PrintJobs called here again
-
-
-                    ///  Console.WriteLine(aValue.Key + ": " + aValue.Value);
-                    // Console.WriteLine(JobsReturnedByValue);
-
-                    // }
-                    //also make sure no duplicates using : if (!values.Contains(aValue) .... values.Add(aVaule) - see lines 32-34
                 }
-                // if (job.ContainsValue(aValue))
-                // {
-
-                //     //create a loop that runs through and breaks out when result is found - NO, I DONT" THINK BREAK IS NECESSARY
             }
 
             return JobsReturnedByValue;
@@ -97,12 +82,9 @@ namespace TechJobsConsoleAutograded6
          * For example, searching for employer "Enterprise" will include results
          * with "Enterprise Holdings, Inc".
          */
-        public static List<Dictionary<string, string>> FindByColumnAndValue(
-            string column,
-            string value
-        )
+        public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
+        
         {
-            // load data, if not already loaded
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
@@ -111,8 +93,7 @@ namespace TechJobsConsoleAutograded6
             {
                 string aValue = row[column];
 
-                //TODO: Make search case-insensitive
-                if (aValue.Contains(value))
+                if (aValue.ToLower().Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }

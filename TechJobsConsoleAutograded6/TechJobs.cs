@@ -133,8 +133,6 @@ namespace TechJobsConsoleAutograded6
 
             return choiceKeys[choiceIdx];
         }
-
-        // TODO: complete the PrintJobs method.
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
             
@@ -146,7 +144,7 @@ namespace TechJobsConsoleAutograded6
                 {
                     
                    Console.WriteLine(listChoice.Key + ": " + listChoice.Value);
-                   
+                
                 }
                  Console.WriteLine("*****");
             }
