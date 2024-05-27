@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Markup;
 
 namespace TechJobsConsoleAutograded6
 {
-	public class JobData
-	{
+    public class JobData
+    {
         static List<Dictionary<string, string>> AllJobs = new List<Dictionary<string, string>>();
         static bool IsDataLoaded = false;
 
@@ -16,7 +18,7 @@ namespace TechJobsConsoleAutograded6
 
         /*
          * Returns a list of all values contained in a given column,
-         * without duplicates. 
+         * without duplicates.
          */
         public static List<string> FindAll(string column)
         {
@@ -47,7 +49,45 @@ namespace TechJobsConsoleAutograded6
             // load data, if not already loaded
             LoadData();
 
-            return null;
+            List<Dictionary<string, string>> JobsReturnedByValue =
+                new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> job in AllJobs)
+            {
+                foreach (string aValue in job.Values)
+                {
+                    //   Console.WriteLine(job);
+                    if (aValue.Contains(value))
+                        
+                    //this line ensures no duplicates . nope it does not ensure that
+                    {
+                        if (!JobsReturnedByValue.Contains(job))
+                            
+                        {
+                            JobsReturnedByValue.Add(job);
+                        }
+                    }
+
+                    // Console.WriteLine(); //idk if i need PrintJobs called here again
+
+
+                    ///  Console.WriteLine(aValue.Key + ": " + aValue.Value);
+                    // Console.WriteLine(JobsReturnedByValue);
+
+                    // }
+                    //also make sure no duplicates using : if (!values.Contains(aValue) .... values.Add(aVaule) - see lines 32-34
+                }
+                // if (job.ContainsValue(aValue))
+                // {
+
+                //     //create a loop that runs through and breaks out when result is found - NO, I DONT" THINK BREAK IS NECESSARY
+            }
+
+            return JobsReturnedByValue;
+
+            //now that new list of dictionaries has been created, create a conditional that ensures no duplicates..
+            //do so by creating a loop with a break???? return all jobs and check for equality?
+            // return null; //this will no longer return null . return jobs that match the search criteria
         }
 
         /**
@@ -57,7 +97,10 @@ namespace TechJobsConsoleAutograded6
          * For example, searching for employer "Enterprise" will include results
          * with "Enterprise Holdings, Inc".
          */
-        public static List<Dictionary<string, string>> FindByColumnAndValue(string column, string value)
+        public static List<Dictionary<string, string>> FindByColumnAndValue(
+            string column,
+            string value
+        )
         {
             // load data, if not already loaded
             LoadData();
@@ -67,7 +110,6 @@ namespace TechJobsConsoleAutograded6
             foreach (Dictionary<string, string> row in AllJobs)
             {
                 string aValue = row[column];
-
 
                 //TODO: Make search case-insensitive
                 if (aValue.Contains(value))
@@ -84,7 +126,6 @@ namespace TechJobsConsoleAutograded6
          */
         private static void LoadData()
         {
-
             if (IsDataLoaded)
             {
                 return;
@@ -126,7 +167,11 @@ namespace TechJobsConsoleAutograded6
         /*
          * Parse a single line of a CSV file into a string array
          */
-        private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
+        private static string[] CSVRowToStringArray(
+            string row,
+            char fieldSeparator = ',',
+            char stringSeparator = '\"'
+        )
         {
             bool isBetweenQuotes = false;
             StringBuilder valueBuilder = new StringBuilder();
@@ -161,4 +206,3 @@ namespace TechJobsConsoleAutograded6
         }
     }
 }
-

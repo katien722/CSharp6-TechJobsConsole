@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace TechJobsConsoleAutograded6
 {
@@ -64,7 +65,8 @@ namespace TechJobsConsoleAutograded6
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+                        // Console.WriteLine("Search all fields not yet implemented.");
+                        PrintJobs(JobData.FindByValue(searchTerm));
                     }
                     else
                     {
@@ -135,27 +137,28 @@ namespace TechJobsConsoleAutograded6
         // TODO: complete the PrintJobs method.
         public void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-             
+            
             foreach (Dictionary<string, string> job in someJobs)
-            {
+            { 
+            Console.WriteLine(Environment.NewLine + "*****");
+
                 foreach (KeyValuePair<string, string> listChoice in job)
                 {
-                   Console.WriteLine(listChoice.Key + ": " + listChoice.Value);  
+                    
+                   Console.WriteLine(listChoice.Key + ": " + listChoice.Value);
                    
                 }
-                Console.WriteLine("******");
-                
+                 Console.WriteLine("*****");
             }
             
                      if (someJobs.Count == 0)   
         {
-            
     
                 Console.WriteLine("No results");
         }
             }
-        }
-    
+   }
+
 }
 
 
