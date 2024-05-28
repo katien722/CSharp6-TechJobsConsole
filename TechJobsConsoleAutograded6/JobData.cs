@@ -69,10 +69,6 @@ namespace TechJobsConsoleAutograded6
             }
 
             return JobsReturnedByValue;
-
-            //now that new list of dictionaries has been created, create a conditional that ensures no duplicates..
-            //do so by creating a loop with a break???? return all jobs and check for equality?
-            // return null; //this will no longer return null . return jobs that match the search criteria
         }
 
         /**
@@ -102,9 +98,6 @@ namespace TechJobsConsoleAutograded6
             return jobs;
         }
 
-        /*
-         * Load and parse data from job_data.csv
-         */
         private static void LoadData()
         {
             if (IsDataLoaded)
